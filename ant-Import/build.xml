@@ -1,0 +1,128 @@
+<project name="Test-Report" default="gen-report-simple" basedir=".">
+
+
+    <import file="CompileBuild.xml"/>
+
+    <import file="RunTest.xml"/>
+
+     
+     <property name="junit.home"  value="${basedir}" />
+     <property name="build"  value="build" />
+
+     <property name="build.dir"  value="build/classes" />
+     <property name="lib.dir" value = "${junit.home}"/>  
+     <property name="reports" location="build/reports"/>
+     <property name="cutsom-reports" location="build/reports/custom"/>
+
+     <property name="build.test"  value="${build.dir}/testcases" />
+
+
+
+ <path id="libraries">        
+         <pathelement location="${java.home}/../lib/tools.jar"/>
+         <fileset dir="${basedir}">
+            <include name="*.jar"/> 
+         </fileset>         
+    </path>	
+
+ <target name="clean"     description="clean up" >
+    <!-- Delete the ${build} and ${report} directory trees -->
+    <delete dir="${build}"/>     
+    <delete dir="${reports}"/>
+  </target> 
+
+
+    <target name="init" depends="clean" description="initialize the build test environment" >
+      <!-- Create the time stamp -->
+      <tstamp/>
+      <!-- Create directory structures -->
+      <mkdir dir="${build.dir}"/>     
+      <mkdir dir="${reports}"/>
+      <mkdir dir="${reports}/raw"/>
+      <mkdir dir="${reports}/simple"/>
+
+      <mkdir dir="${reports}/html"/>
+      <mkdir dir="${reports}/batch"/>
+      <mkdir dir="${cutsom-reports}"/>
+
+  </target>
+
+ 
+   <target name ="compile-build" depends="init">
+     <!--Call Now the imported task-->
+
+    <antcall target="compileTests">
+      <param name="param1" value="version 1.x"/>
+    </antcall>
+
+    
+     <!--ant antfile="Compilebuild.xml" inheritAll="true" inheritRefs="true" target="compileTests">
+        <property name="param1" value="version 1.x"/>
+        <property file="default.properties"/>
+      </ant-->
+ 
+   </target>
+
+
+  <target name ="run-test-build" depends="compile-build">
+
+           <antcall target="testReport"/>
+
+		 <!--ant antfile="RunTest.xml" inheritAll="true" inheritRefs="true" target="testReport"/-->
+
+  </target>
+
+
+<target name ="TestBatch" depends="compile-build">
+
+              <antcall target="runBatch"/>
+
+		 <!--ant antfile="RunTest.xml" inheritAll="true" inheritRefs="true" target="runBatch"/-->
+
+  </target>
+
+
+ 
+
+<!--Run this task to generate test report in default format for specified test cases-->
+
+  <target name ="gen-report-simple" depends="run-test-build">
+		<junitreport  todir="${reports}/simple">
+		  <fileset dir="${reports}/simple/">
+		    <include name="test-result.xml"/>
+		  </fileset>
+		  <report format="frames" todir="${reports}/html"/>
+		</junitreport>
+  </target>
+
+<!--Run this task to generate customized test report for specified test cases-->
+
+ <target name ="simple-report-styled" depends="run-test-build">
+		<junitreport todir="${reports}/simple">
+		  <fileset dir="${reports}/simple/">
+		    <include name="test-result.xml"/>
+		  </fileset>
+		  <report todir="${reports}/custom"   styledir="styles"   format="frames">
+               <!--param name="key1" expression="value1"/>
+               <param name="key2" expression="value2"/-->
+               </report>
+		</junitreport>
+  </target>
+
+
+
+
+  <target name ="gen-report-batch" depends="TestBatch ">
+		<junitreport  todir="${reports}/batch">
+		  <fileset dir="${reports}/raw/">
+		    <include name="TEST-*.xml"/>
+		  </fileset>
+		  <report format="frames" todir="${reports}/batch"/>
+		</junitreport>
+  </target>
+
+ 
+ 
+
+</project>
+

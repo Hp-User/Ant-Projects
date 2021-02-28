@@ -1,0 +1,40 @@
+<project name="ant-db" default="Db-Test"> 
+      
+
+<property file="jdbc.properties"/>
+
+<target name="Db-Test">
+
+   <sql
+     driver="${jdbc.driverClassName}"
+     url="${jdbc.url}"
+     userid="${jdbc.username}"
+     password="${jdbc.password}"  >    
+   
+
+drop table if exists emp;
+
+drop table if exists UserAccounts ;
+
+
+create table emp (empno int not null primary key,ename varchar(20) ,sal float);
+
+ insert into emp values(112,'MyUser1', 1000);
+ 
+insert into emp values(152,'TestUser', 2300);
+
+
+  create table UserAccounts (Userid int not null primary key,uame varchar(12) ,balance float);
+
+insert into UserAccounts values(110, 'Sunil',1230.35);
+
+
+<classpath>
+	<pathelement location="DBDriver/mysql-connector-java-5.1.17-bin.jar"/>
+</classpath> 
+
+
+</sql>
+</target> 
+    
+</project>

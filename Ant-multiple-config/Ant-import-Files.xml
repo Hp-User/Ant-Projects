@@ -1,0 +1,38 @@
+<project name="Ant-Import-Files" default="Ant-Tasks" basedir=".">
+	 
+<!--Import the targets from other xml files into current xml file-->
+
+ <!--import file="build.xml"/-->
+
+ <import file="build-analyze.xml"/>
+
+ <import file="Sonar-Analyze.xml"/>
+
+
+<target name="Ant-Tasks" description="Invokes different Ant targets.">
+
+	<!--Invoke the target from same build xml-->
+
+<ant antfile="build.xml" inheritAll="true" inheritRefs="true" target="BatchTest"></ant>
+	
+
+<!--antcall target="BatchTest">
+</antcall--> 
+
+<antcall target="clean">
+</antcall> 
+
+<antcall target="RunCheckstyle">
+</antcall> 
+
+<antcall target="sonar-run">
+</antcall> 
+		 
+    </target>
+
+
+
+	 
+
+</project>
+

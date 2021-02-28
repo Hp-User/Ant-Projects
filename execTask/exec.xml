@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<project name="execution" default="timeouts">
+
+<!-- sleep for 20s but set the timeout for ten -->
+  <target name="sleep-five-seconds" >
+    <echo message="sleeping for 5 seconds" />
+    <exec executable="sleep" 
+      failonerror="true"
+      timeout="10000">
+      <arg value="5" /> 
+    </exec>
+  </target>
+
+  <target name="sleep-fifteen-seconds" >
+    <echo message="sleeping for 15 seconds" />
+    <exec executable="sleep" 
+      failonerror="true"
+      timeout="2000">
+      <arg value="15" /> 
+    </exec>
+  </target>
+  
+  <target name="name with space">
+    <sleep seconds="20"/>
+  </target>
+
+  <target name="dosleep">
+    <sleep seconds="20"/>
+  </target>
+  
+  <target name="timeouts"
+    depends="sleep-five-seconds"/>
+    
+  <target name="symlink">
+    <exec executable="ln">
+      <arg value="-s"/>
+      <arg file="execution.xml"/>
+      <arg file="symlink.xml"/>
+    </exec>
+  </target>
+
+  <target name="preprocess">
+    <property environment="env"/>                                      
+  <exec executable="preprocess" 
+    newenvironment="true"                                           
+    >
+    <env key="PATH" path="${dist.dir}/win32;${env.PATH}"/>          
+    <env key="TEMPLATE" file="${src.dir}/include/template.html"/>   
+    <env key="USER" value="self"/>                                  
+  </exec>
+  </target>    
+   
+  
+</project>  

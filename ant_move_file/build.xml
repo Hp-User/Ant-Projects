@@ -1,0 +1,39 @@
+<?xml version="1.0" ?>
+<project default="main">
+
+    <property name="message" value="Building the output." />
+    <property name="src" location="source" />
+    <property name="output" location="bin" />
+    <property name="dist" location="user" />
+
+    <target name="main" depends="init, compile, compress, deploy">
+        <echo>
+            ${message}
+        </echo>
+    </target>
+  
+    <target name="init">
+        <mkdir dir="${output}" />
+        <mkdir dir="${dist}" />
+    </target>
+  
+    <target name="compile">
+        <javac srcdir="${src}" destdir="${output}" />
+    </target>
+  
+  <target name="compress">
+        <jar destfile="${output}/app.jar" basedir="${output}" includes="*.class" />
+  </target>
+
+  <target name="deploy">
+    <move todir="${dist}">
+      <fileset dir="${output}">
+          <exclude name="*.java"/>
+          <exclude name="*.class"/>
+      </fileset>
+    </move>
+  </target>
+
+</project>
+
+

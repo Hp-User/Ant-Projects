@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+
+ <!--Copy the catalina-ant.jar into apacheAnt/lib directory-->
+
+<project name="MyApp-Project" basedir="." default="deployApp">
+
+	<property file="app.properties"/>
+
+      <path id="libraries">
+        <fileset dir="${librarydir}">
+            <include name="*.jar"/>
+        </fileset>
+		<fileset dir="${DbLib}">
+            <include name="*.jar"/>			 
+        </fileset>	
+    </path> 
+
+ 
+
+<!-- Configure the custom Ant tasks for the Tomcat Manager application --> 
+<taskdef name="deploy" classname="org.apache.catalina.ant.DeployTask"/>
+<taskdef name="list" classname="org.apache.catalina.ant.ListTask"/>
+<taskdef name="reload" classname="org.apache.catalina.ant.ReloadTask"/>
+<taskdef name="resources" classname="org.apache.catalina.ant.ResourcesTask"/>
+<taskdef name="roles" classname="org.apache.catalina.ant.RolesTask"/> 
+<taskdef name="start" classname="org.apache.catalina.ant.StartTask"/> 
+<taskdef name="stop" classname="org.apache.catalina.ant.StopTask"/> 
+<taskdef name="undeploy" classname="org.apache.catalina.ant.UndeployTask"/>
+  
+  
+<target name="deployApp" description="Deploy web application war file " depends="Create War">
+   <echo message="Deploying the application ${AppName}.war"/>
+   <deploy url="${url}" username="${username}" password="${password}" path="${app}" war="file:${dist.dir}/${AppName}.war"/>
+ </target>
+
+ <target name="reloadApp" description="Reload web application" >
+  <echo message="Reloading the application ${AppName}.war"/>
+    <reload url="${url}" username="${username}" password="${password}" path="${app}"/> 
+</target>
+ <target name="undeployApp" description="Remove web application">
+   <echo message="Undeploying the application ${AppName}.war"/>
+    <undeploy url="${url}" username="${username}" password="${password}" path="${app}"/>
+ </target> 
+
+<target name="startApp" description="Start Tomcat application"> 
+ <echo message="Restarting the application ${AppName}.war"/>
+    <start url="${url}" username="${username}" password="${password}" path="${app}"/>
+ </target> 
+
+<target name="stopApp" description="Stop Tomcat application"> 
+ <echo message="Stopping the application ${AppName}.war"/>
+    <stop url="${url}" username="${username}" password="${password}" path="${app}"/>
+ </target> 
+
+<target name="listApps" description="List Tomcat applications"> 
+  <echo message="Listing the applications deployed in Tomcat"/>
+  <list url="${url}" username="${username}" password="${password}"/>
+ </target>    
+
+
+	<target name="clean" description="Clean output dirs (build, dist)">
+
+		<delete dir="${build.dir}"/>
+
+		<delete dir="${dist.dir}"/>
+
+	</target>
+
+
+	<target name="build" description="Compile and build main source tree java files into class files, generate jar files">
+
+		<mkdir dir="${build.dir}"/>	 
+
+          <javac srcdir="${src.dir}"
+             destdir="${build.dir}"
+             classpathref="libraries"/>
+		 
+	</target>
+
+
+	<target name="Create War" depends="build" description="Build the web application archive">
+
+		<mkdir dir="${dist.dir}"/>
+
+		<war warfile="${dist.dir}/${AppName}.war" webxml="${war.dir}/WEB-INF/web.xml">
+			
+			<!-- Include the JSPs and other documents -->
+			<fileset dir="WebApp" excludes="WEB-INF/**"/>
+			
+			<!-- Bring in App-specific XML configuration files -->
+			<webinf dir="${war.dir}/WEB-INF">
+				<!-- We've already included this -->
+				<exclude name="web.xml"/>
+			</webinf>
+			
+			<!-- Include the compiled classes -->
+			<classes dir="${build.dir}"/>
+
+			<lib dir="${lib.dir}">
+				<!-- The servlet container provides the Servlet API -->
+				<exclude name="servlet-api.jar"/>
+                         <include name="${DbLib}/classes111.jar"/>
+			</lib>
+
+		 </war>
+
+	</target>
+
+<!--target name="deploy" depends="Create War">
+   <copy file="${dist.dir}/${AppName}.war" todir="${tomcat.web.home}"/>
+</target-->
+
+
+</project>

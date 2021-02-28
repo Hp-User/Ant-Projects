@@ -1,0 +1,27 @@
+<project name="Compile" default="compileTests" basedir=".">
+
+<!--Compile application code -->
+    <target name="compile" description="comiple the java source files" >
+
+        <mkdir dir="${build.dir}"/>
+        <javac srcdir="src/app" destdir="${build.dir}" >
+            <include name="*.java"/>
+        </javac>
+    </target>
+
+     
+<!--Generally the test cases and app code should be separately compiled-->
+
+    <target name="compileTests" depends="compile" description="comiple the java test source files" >
+        <mkdir dir="${build.test}"/>
+        <echo message ="Running the compileTests task in Compile-Build with ${param1} into dir ${build.test}"/>
+        <javac srcdir="src/test" destdir="${build.test}">             
+           <classpath>
+                <path refid="libraries"/>
+                <pathelement location="${build.dir}"/>
+            </classpath>
+            <include name="*.java"/>
+        </javac>
+    </target>
+
+</project>

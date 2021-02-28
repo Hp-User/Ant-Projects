@@ -1,0 +1,40 @@
+<project name="ant_jar_run" default="RunBusiness">
+         
+
+    <property name="sourcedir" value="${basedir}/source"/>
+    <property name="targetdir" value="${basedir}/source"/>
+
+    
+    <target name="compile">
+
+      <javac srcdir="${sourcedir}"
+             destdir="${targetdir}"/>            
+ 
+    </target>
+   
+
+     
+    <target name="RunBusiness" depends="compile">
+           <parallel threadCount='2'> 
+       <!--parallel-->
+           <java classname="HrManager" classpath="${targetdir}"/>  
+           <java classname="MarketingManager" classpath="${targetdir}"/> 
+ 
+
+         <sequential>
+              <java classname="ChiefArchitect" classpath="${targetdir}"/>  
+
+              <java classname="Designer" classpath="${targetdir}"/>  
+             
+              <java classname="ProjectManager" classpath="${targetdir}"/>  
+                    
+         </sequential>          
+
+     </parallel>
+         <echo message ="Main thread has finished"/>
+    </target>   
+
+     
+	 
+     
+</project>

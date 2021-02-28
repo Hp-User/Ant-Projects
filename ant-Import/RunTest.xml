@@ -1,0 +1,58 @@
+<project name="UnitTests" default="testSimple">
+
+  
+
+   <target name="testSimple" description="run your simple test" >      
+
+		<junit printsummary="yes" haltonfailure="no" showoutput="yes" >
+			<classpath>
+                     <path refid="libraries"/>
+                     <pathelement location="${build.dir}"/>
+                     <pathelement location="${build.test}"/>
+                 </classpath>  
+
+                            <test name="test.SimpleTest"/>                        
+		</junit>	
+	</target>
+
+
+<target name="testReport" description="run the simple test and generate xml output of test result" >
+	      
+
+		<junit printsummary="yes" haltonfailure="no" showoutput="yes" >
+			<classpath>
+                     <path refid="libraries"/>
+                     <pathelement location="junit-4.2.jar"/>
+                     <pathelement location="${build.dir}"/>
+                     <pathelement location="${build.test}"/>
+                 </classpath>  
+                       <test name="test.SimpleTest" haltonfailure="no" outfile="test-result" todir="${reports}/simple">
+                               <formatter type="xml"/> 
+                        </test>      
+		</junit>	
+	</target>
+
+<target name="runBatch" description="run the batch test and generate xml outputs of test results" >
+	      
+
+		<junit printsummary="yes" haltonfailure="no" haltonerror="no" showoutput="yes" >
+			<classpath>
+                     <path refid="libraries"/>
+                     <pathelement location="${build.dir}"/>
+                     <pathelement location="${build.test}"/>
+                 </classpath>  
+                                
+		
+ 		  <batchtest fork="yes" todir="${reports}/raw">
+		  	<formatter type="xml"/>
+		    <fileset dir="src">
+                 <!--Specify the java files with package test-->
+		      <include name="**/test/*.java"/>
+		    </fileset>
+
+		  </batchtest>
+		</junit>	
+	</target>
+
+
+</project>

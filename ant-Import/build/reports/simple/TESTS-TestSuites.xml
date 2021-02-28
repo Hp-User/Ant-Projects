@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites>
+  <testsuite errors="1" failures="0" hostname="MyPC" id="0" name="SimpleTest" package="test" tests="1" time="0.0" timestamp="2011-03-31T10:19:45">
+      <properties>
+          <property name="java.vendor" value="Sun Microsystems Inc." />
+
+          <property name="lib.dir" value="E:/junit/junit4.0" />
+
+          <property name="cutsom-reports" value="D:\Ant_Training\Programs\day2\ant_Import\build\reports\custom" />
+
+          <property name="sun.java.launcher" value="SUN_STANDARD" />
+
+          <property name="sun.management.compiler" value="HotSpot Client Compiler" />
+
+          <property name="os.name" value="Windows XP" />
+
+          <property name="sun.boot.class.path" value="C:\Program Files\Java\jdk1.5.0_14\jre\lib\rt.jar;C:\Program Files\Java\jdk1.5.0_14\jre\lib\i18n.jar;C:\Program Files\Java\jdk1.5.0_14\jre\lib\sunrsasign.jar;C:\Program Files\Java\jdk1.5.0_14\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.5.0_14\jre\lib\jce.jar;C:\Program Files\Java\jdk1.5.0_14\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.5.0_14\jre\classes" />
+
+          <property name="TODAY" value="March 31 2011" />
+
+          <property name="sun.desktop" value="windows" />
+
+          <property name="java.vm.specification.vendor" value="Sun Microsystems Inc." />
+
+          <property name="ant.home" value="D:\Ant_Training\install\apache-ant-1.8\apache-ant-1.8.0RC1\bin\.." />
+
+          <property name="java.runtime.version" value="1.5.0_14-b03" />
+
+          <property name="user.name" value="admin" />
+
+          <property name="reports" value="D:\Ant_Training\Programs\day2\ant_Import\build\reports" />
+
+          <property name="build.dir" value="build/classes" />
+
+          <property name="user.language" value="en" />
+
+          <property name="build" value="build" />
+
+          <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.5.0_14\jre\bin" />
+
+          <property name="ant.project.default-target" value="gen-report-simple" />
+
+          <property name="ant.file.Test-Report" value="D:\Ant_Training\Programs\day2\ant_Import\build.xml" />
+
+          <property name="ant.project.name" value="Test-Report" />
+
+          <property name="DSTAMP" value="20110331" />
+
+          <property name="java.version" value="1.5.0_14" />
+
+          <property name="user.timezone" value="" />
+
+          <property name="sun.arch.data.model" value="32" />
+
+          <property name="java.endorsed.dirs" value="C:\Program Files\Java\jdk1.5.0_14\jre\lib\endorsed" />
+
+          <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86" />
+
+          <property name="sun.jnu.encoding" value="Cp1252" />
+
+          <property name="file.encoding.pkg" value="sun.io" />
+
+          <property name="file.separator" value="\" />
+
+          <property name="java.specification.name" value="Java Platform API Specification" />
+
+          <property name="ant.file.type.Compile" value="file" />
+
+          <property name="java.class.version" value="49.0" />
+
+          <property name="user.country" value="US" />
+
+          <property name="ant.file.type.Test-Report" value="file" />
+
+          <property name="java.home" value="C:\Program Files\Java\jdk1.5.0_14\jre" />
+
+          <property name="java.vm.info" value="mixed mode, sharing" />
+
+          <property name="ant.file" value="D:\Ant_Training\Programs\day2\ant_Import\build.xml" />
+
+          <property name="os.version" value="5.1" />
+
+          <property name="path.separator" value=";" />
+
+          <property name="java.vm.version" value="1.5.0_14-b03" />
+
+          <property name="user.variant" value="" />
+
+          <property name="ant.library.dir" value="D:\Ant_Training\install\apache-ant-1.8\apache-ant-1.8.0RC1\lib" />
+
+          <property name="ant.file.UnitTests" value="D:\Ant_Training\Programs\day2\ant_Import\RunTest.xml" />
+
+          <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob" />
+
+          <property name="sun.io.unicode.encoding" value="UnicodeLittle" />
+
+          <property name="awt.toolkit" value="sun.awt.windows.WToolkit" />
+
+          <property name="user.home" value="C:\Documents and Settings\admin" />
+
+          <property name="java.specification.vendor" value="Sun Microsystems Inc." />
+
+          <property name="java.library.path" value="C:\Program Files\Java\jdk1.5.0_14\bin;.;C:\WINDOWS\system32;C:\WINDOWS;D:\oracle\ora90\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\Program Files\Microsoft SQL Server\100\Tools\Binn\;C:\Program Files\Microsoft SQL Server\100\DTS\Binn\;D:\Ant_Training\install\apache-ant-1.8\apache-ant-1.8.0RC1\bin;C:\Program Files\Java\jdk1.5.0_14\bin;D:\Ant_Training\install\apache-maven-2.2.1-bin\apache-maven-2.2.1\bin;;C:\Program Files\Common Files\Nero\Lib\" />
+
+          <property name="java.vendor.url" value="http://java.sun.com/" />
+
+          <property name="java.vm.vendor" value="Sun Microsystems Inc." />
+
+          <property name="java.runtime.name" value="Java(TM) 2 Runtime Environment, Standard Edition" />
+
+          <property name="java.class.path" value="D:\Ant_Training\install\apache-ant-1.8\apache-ant-1.8.0RC1\bin\..\lib\ant-launcher.jar;C:\Test\;D:\Ant_Training\Programs\day2\ant_Import\.\;D:\Ant_Training\install\apache-ant-1.8\apache-ant-1.8.0RC1\lib\ant-antlr.jar;D:\Ant_Training\install\apache-ant-1.8\apache-ant-1.8.0RC1\lib\ant-apache-bcel.jar;D:\Ant_Training\install\apache-ant-1.8\apache-ant-1.8.0RC1\lib\ant-apache-bsf.jar;D:\Ant_Training\install\apache-ant-1.8\apache-ant-1.8.0RC1\lib\ant-apache-log4j.jar;D:\Ant_Training\install\apache-ant-1.8\apache-ant-1.8.0RC1\lib\ant-apache-oro.jar;D:\Ant_Training\install\apache-ant-1.8\apache-ant-1.8.0RC1\lib\ant-apache-regexp.jar;D:\Ant_Training\install\apache-ant-1.8\apache-ant-1.8.0RC1\lib\ant-apache-resolver.jar;D:\Ant_Training\install\apache-ant-1.8\apache-ant-1.8.0RC1\lib\ant-apache-xalan2.jar;D:\Ant_Training\install\apache-ant-1.8\apache-ant-1.8.0RC1\lib\ant-commons-logging.jar;D:\Ant_Training\install\apache-ant-1.8\apache-ant-1.8.0RC1\lib\ant-commons-net.jar;D:\Ant_Training\install\apache-ant-1.8\apache-ant-1.8.0RC1\lib\ant-jai.jar;D:\Ant_Training\install\apache-ant-1.8\apache-ant-1.8.0RC1\lib\ant-javamail.jar;D:\Ant_Training\install\apache-ant-1.8\apache-ant-1.8.0RC1\lib\ant-jdepend.jar;D:\Ant_Training\install\apache-ant-1.8\apache-ant-1.8.0RC1\lib\ant-jmf.jar;D:\Ant_Training\install\apache-ant-1.8\apache-ant-1.8.0RC1\lib\ant-jsch.jar;D:\Ant_Training\install\apache-ant-1.8\apache-ant-1.8.0RC1\lib\ant-junit.jar;D:\Ant_Training\install\apache-ant-1.8\apache-ant-1.8.0RC1\lib\ant-launcher.jar;D:\Ant_Training\install\apache-ant-1.8\apache-ant-1.8.0RC1\lib\ant-netrexx.jar;D:\Ant_Training\install\apache-ant-1.8\apache-ant-1.8.0RC1\lib\ant-nodeps.jar;D:\Ant_Training\install\apache-ant-1.8\apache-ant-1.8.0RC1\lib\ant-swing.jar;D:\Ant_Training\install\apache-ant-1.8\apache-ant-1.8.0RC1\lib\ant-testutil.jar;D:\Ant_Training\install\apache-ant-1.8\apache-ant-1.8.0RC1\lib\ant-trax.jar;D:\Ant_Training\install\apache-ant-1.8\apache-ant-1.8.0RC1\lib\ant.jar;D:\Ant_Training\install\apache-ant-1.8\apache-ant-1.8.0RC1\lib\xercesImpl.jar;D:\Ant_Training\install\apache-ant-1.8\apache-ant-1.8.0RC1\lib\xml-apis.jar;C:\Program Files\Java\jdk1.5.0_14\lib\tools.jar" />
+
+          <property name="ant.version" value="Apache Ant version 1.8.0RC1 compiled on January 5 2010" />
+
+          <property name="TSTAMP" value="1549" />
+
+          <property name="ant.file.Compile" value="D:\Ant_Training\Programs\day2\ant_Import\CompileBuild.xml" />
+
+          <property name="java.vm.specification.name" value="Java Virtual Machine Specification" />
+
+          <property name="ant.file.type" value="file" />
+
+          <property name="java.vm.specification.version" value="1.0" />
+
+          <property name="sun.cpu.endian" value="little" />
+
+          <property name="sun.os.patch.level" value="Service Pack 3" />
+
+          <property name="java.io.tmpdir" value="C:\DOCUME~1\admin\LOCALS~1\Temp\" />
+
+          <property name="java.vendor.url.bug" value="http://java.sun.com/cgi-bin/bugreport.cgi" />
+
+          <property name="os.arch" value="x86" />
+
+          <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment" />
+
+          <property name="ant.file.type.UnitTests" value="file" />
+
+          <property name="java.ext.dirs" value="C:\Program Files\Java\jdk1.5.0_14\jre\lib\ext" />
+
+          <property name="user.dir" value="D:\Ant_Training\Programs\day2\ant_Import" />
+
+          <property name="line.separator" value=" " />
+
+          <property name="java.vm.name" value="Java HotSpot(TM) Client VM" />
+
+          <property name="basedir" value="D:\Ant_Training\Programs\day2\ant_Import" />
+
+          <property name="junit.home" value="E:/junit/junit4.0" />
+
+          <property name="ant.java.version" value="1.5" />
+
+          <property name="ant.core.lib" value="D:\Ant_Training\install\apache-ant-1.8\apache-ant-1.8.0RC1\lib\ant.jar" />
+
+          <property name="file.encoding" value="Cp1252" />
+
+          <property name="build.test" value="build/classes/testcases" />
+
+          <property name="java.specification.version" value="1.5" />
+
+          <property name="ant.project.invoked-targets" value="testReport" />
+
+      </properties>
+
+      <error message="test.SimpleTest" type="java.lang.ClassNotFoundException" />
+
+      <system-out />
+
+      <system-err />
+
+  </testsuite>
+</testsuites>

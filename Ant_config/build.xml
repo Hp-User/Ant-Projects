@@ -1,0 +1,80 @@
+<project name="ant1" default="run">       
+
+   <!--property name="baseDir" value="."/>  
+   <property name="mySrc" value="${baseDir}/source"/-->
+
+   <property file="user.properties"/>
+   
+
+
+    <target name="clean">
+    <!--Delete the output dir-->
+        <delete dir="${baseDir}/bin"/>         
+    </target>
+
+   <target name="init">
+    <!--Create the output dir-->         
+        <mkdir dir="bin"/>
+    </target>
+
+
+   <!--Tasks to be executed -->
+    <target name="compileJava">
+    <!--Execute the 'javac' task by specifying the required classpath -->
+
+      <javac srcdir="${mySrc}"
+             destdir="${baseDir}/bin"/>
+ 
+    </target>
+
+  
+   <!--Copy the non java files to output directory-->
+    <target name="copyData">
+
+        <copy file="Message.txt" todir="bin"/>
+        <copy file="data.xml" tofile="Users.xml"/>
+
+  <!--basedir is the current directory-->
+        <copy todir="${targetDir}">
+            <fileset dir="${mySrc}">
+                <include name="**/*.txt"/>                 
+                <exclude name="**/*.java"/>
+                <exclude name="bin/"/>
+            </fileset>
+        </copy>
+    </target>
+
+ <target name="run" depends="compileJava">
+  <!--Run the 'java' task by specifying the required run time classpath -->
+
+        <java fork="true" classname="Welcome">
+
+            <!--The location of class file to be executed-->             
+
+            <classpath path="bin"/>
+        </java>
+    </target>  
+
+    <target name="run2" depends="compileJava">  
+       <echo message="Running the ForkTest "/>
+
+        <!--java fork="true" spawn='true' classname="TestFork"--> 
+
+       <java classname="TestFork" fork="true" spawn='true'>                 
+
+            <classpath path="bin"/>
+        </java>
+
+     <echo message="Running the Welcome "/>
+
+       <java classname="Welcome">          
+
+            <classpath path="bin"/>
+        </java>
+
+    </target>  	 
+
+	 
+
+    
+</project>

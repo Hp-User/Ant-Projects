@@ -1,0 +1,92 @@
+<project name="javaDoc" default="run">
+<!--Default task is compile-->
+
+    <property name="sourcedir" value="src"/>
+    <property name="targetdir" value="${basedir}/bin"/>
+
+    <property name="librarydir" value="E:/apache-tomcat-6.0.24/lib"/> 
+
+    
+    <path id="libraries">
+        <fileset dir="${targetdir}">
+            <include name="*.class"/>
+        </fileset>
+    <fileset dir="${librarydir}">
+            <include name="*.jar"/>
+        </fileset>			 
+    </path>
+     
+
+  
+    <target name="run">         
+        <exec executable="cmd">
+        <arg value="/c"/>
+        <arg value="ant.bat"/>
+        <arg value="-p"/>
+       </exec>
+    </target>
+
+    <target name="run2">         
+        <exec executable="notepad.exe" spawn='true'>
+        <arg value="data.txt"/>         
+       </exec>
+    </target>
+
+<property name="browser" location="C:/Program Files/Internet Explorer/iexplore.exe"/>
+<property name="file" location="ED:/Ant_Training/install/apache-ant-1.8/apache-ant-1.8.0RC1/docs/manual/index.html"/>
+
+
+  <target name="run3">     
+    <sleep milliseconds="10"/>
+   <sleep hours="1" minutes="-59" seconds="-58"/>
+    <exec executable="${browser}" spawn="true">
+       <arg value="${file}"/>
+    </exec>
+   </target> 
+     
+
+    <target name="wait"> 
+
+        <!--This command runs within the same thread of execution-->
+        <!--exec executable="cmd">
+         <arg value="/c"/>
+         <arg value="E:/apache-tomcat6/bin/startup.bat"/>  
+          <arg value="-p"/>
+         </exec-->  
+  
+
+        <!--This command runs in seperate thread of execution-->
+        <exec executable="E:/apache-tomcat6/bin/startup.bat" spawn="true">    
+          
+          <arg value="My_Data_File"/>  
+           
+         </exec>    
+  
+        <waitfor maxwait="25" maxwaitunit="second" checkevery="2000" timeoutproperty="30"> 
+       <!--chceks the url for every 5000 miliseconds if not found active-->                     
+        <!--waitfor maxwait="25" maxwaitunit="second"-->   
+                 
+            <http url="http://localhost:8080"/>
+       </waitfor>
+
+       <waitfor maxwait="10" maxwaitunit="second">
+           <available file="E:/apache-tomcat6/logs/admin.2010-04-21.log"/>
+       </waitfor>
+
+
+    <!--chceks the url and localhost port 1521 both active-->                     
+        
+       <waitfor maxwait="5" maxwaitunit="second">
+        <and>
+             <socket server="localhost" port="1521"/>
+             <http url="http://localhost:8080"/>
+        </and>
+     </waitfor>
+    </target>
+
+
+
+  
+     
+     
+</project>

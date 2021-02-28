@@ -1,0 +1,52 @@
+<project name="ant1" default="compileJava">       
+
+    <target name="clean">
+    <!--Delete the output dir-->
+        <delete dir="bin"/>         
+    </target>
+
+   <target name="init">
+    <!--Create the output dir-->         
+        <mkdir dir="bin"/>
+    </target>
+
+
+   <!--Tasks to be executed -->
+    <target name="compileJava">
+    <!--Execute the 'javac' task by specifying the required classpath -->
+
+      <javac srcdir="source"
+             destdir="bin"/>
+ 
+    </target>
+
+   <!--Copy the non java files to output directory-->
+    <target name="copy-files">
+
+        <copy file="Message.txt" todir="bin"/>
+        <copy file="data.xml" tofile="Users.xml"/>
+
+  <!--basedir is the current directory-->
+        <copy todir="bin">
+            <fileset dir="${basedir}">
+                <include name="**/*.txt"/>
+                <include name="data.xml"/>
+                <exclude name="**/*.java"/>
+                <exclude name="bin/"/>
+            </fileset>
+        </copy>
+    </target>
+
+ <target name="run" depends="compileJava">
+  <!--Run the 'java' task by specifying the required run time classpath -->
+
+        <java fork="true" classname="Welcome">
+
+            <!--The location of class file to be executed-->             
+
+            <classpath path="bin"/>
+        </java>
+    </target>  	 
+
+    
+</project>

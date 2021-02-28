@@ -1,0 +1,31 @@
+<project name="ant-db" default="Db-Test"> 
+      
+
+<property file="jdbc.properties"/>
+
+<target name="Db-Test">
+
+   <sql
+     driver="${jdbc.driverClassName}"
+     url="${jdbc.url}"
+     userid="${jdbc.username}"
+     password="${jdbc.password}"  >    
+   
+
+
+<transaction  src="Db-Scripts/data1.sql"/>
+<transaction  src="Db-Scripts/data2.sql"/>
+
+<transaction  src="Db-Scripts/data3.sql"/>
+<transaction  src="Db-Scripts/data4.sql"/>
+
+ 
+<classpath>
+	<pathelement location="DBDriver/mysql-connector-java-5.1.17-bin.jar"/>
+</classpath> 
+
+
+</sql>
+</target> 
+    
+</project>
